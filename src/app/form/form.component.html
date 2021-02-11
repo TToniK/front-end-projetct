@@ -1,0 +1,69 @@
+<p align="center" style="font-size: xx-large; color: darkred" >Yhteystiedot</p>
+<mat-card class="form-card">
+  <mat-card-content class="content">
+    <form (ngSubmit)="onSubmit(form1)" #form1="ngForm">
+     <mat-form-field appearance="outline">
+        <input matInput [(ngModel)]="person.firstName"
+               name="firstName"
+               #firstName="ngModel"
+               id="firstName"
+               type="text"
+               placeholder="etunimi"
+               required minlength="2"
+               pattern="[A-Za-z ]{1,32}">
+       <mat-error *ngIf="firstName.invalid">
+         Please enter a valid name.
+       </mat-error>
+     </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input matInput [(ngModel)]="person.lastName"
+               name="lastName"
+               #lastName="ngModel"
+               id="lastName"
+               type="text"
+               placeholder="sukunimi"
+               required minlength="2"
+               pattern="[A-Za-z ]{1,32}">
+        <mat-error *ngIf="lastName.invalid">
+          Please enter a valid last name.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <input matInput [(ngModel)]="person.personId"
+               name="personId"
+               #personId="ngModel"
+               id="personId"
+               type="text"
+               placeholder="henkilötunnus"
+               required minlength="2"
+               pattern="[A-Za-z ]{1,32}">
+        <mat-error *ngIf="personId.invalid">
+          Please enter a valid social security number.
+        </mat-error>
+      </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <input matInput [(ngModel)]="person.userName"
+             name="userName"
+             placeholder="käyttäjätunnus"
+             #userName="ngModel"
+             >
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="salis" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="syötä salasana uudelleen" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </mat-form-field>
+    <mat-checkbox name="acceptTerms" color="primary">Hyväksyn kaikki käyttöehdot</mat-checkbox>
+    </form>
+  </mat-card-content>
+
+  <button mat-raised-button id="acceptButton" class="button">Seuraava</button>
+</mat-card>

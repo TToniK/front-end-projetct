@@ -1,0 +1,46 @@
+<mat-card id="formCard">
+  <mat-card-content fxLayout="column" [formGroup]="profileForm">
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+     <mat-form-field class="field-full-width">
+       <input matInput [formControl]="firstName" formControlName="firstName" placeholder="etunimi">
+     </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [formControl]="lastName" formControlName="lastName" placeholder="sukunimi">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [formControl]="personId" formControlName="personId" placeholder="henkilötunnus">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [formControl]="eMail" formControlName="eMail" placeholder="sähköposti">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [formControl]="userName" formControlName="userName" placeholder="käyttäjätunnus">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [formControl]="password" placeholder="salasana" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="password" matInput [formControl]="confirmPassword" formControlName="confirmPassword" placeholder="syötä salasana uudelleen"
+             pattern="{{password.value}}">
+
+
+    </mat-form-field>
+
+       <mat-checkbox formControlName="termsAndConditions">Hyväksyn käyttöehdot.
+       <mat-error *ngIf="termsAndConditions.invalid && termsAndConditions.touched">Paina hyväksy!</mat-error>
+       </mat-checkbox>
+
+    </form>
+  </mat-card-content>
+
+  <button mat-raised-button [disabled]="profileForm.invalid">Seuraava</button>
+</mat-card>

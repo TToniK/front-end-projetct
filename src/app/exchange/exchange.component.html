@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-header></mat-card-header>
+  <mat-card-content>
+    <p *ngIf="ratesData$ | async"></p>
+    <p>Muunna</p>
+    <mat-form-field>
+      <input matInput #userInput type="number" class="input" id="buyInput" value="1" (input)="calculate(fieldForm.value, userInput.value)">
+    </mat-form-field>
+    <mat-form-field class="currencySelect">
+      <mat-select #fieldForm [(value)]="currencyValue" id="selectCurrency" class="currencySelect" >
+        <mat-option *ngFor="let item of ratesData$| async" value="{{item.currencyValue}}" (click)="calculate(fieldForm.value, userInput.value)">
+          {{item.currencyKey}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>Kurssi: {{currencyValue}}</p>
+    <p>Euroina: {{price | currency: 'EUR'}}</p>
+  </mat-card-content>
+</mat-card>
