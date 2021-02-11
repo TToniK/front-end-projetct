@@ -24,9 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { ExchangeComponent } from './exchange/exchange.component';
 import {environment} from '../environments/environment';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireModule } from '@angular/fire';
+
 
 @NgModule({
   declarations: [
@@ -40,9 +38,6 @@ import { AngularFireModule } from '@angular/fire';
     ExchangeComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
     BrowserModule,
     AppRoutingModule,
     MatGridListModule,
